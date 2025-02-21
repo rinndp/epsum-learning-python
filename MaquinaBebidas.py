@@ -46,11 +46,12 @@ while True:
             bebidaValida = True
 
 
-    #COBRO DE LA BEBIDA
+
+    #CHECK SI CAMBIO INSUFICIENTE
 
     precioBebidaPagado = False
     dineroAcumulado = 0
-    mensajePecioExacto = ""
+    mensajePrecioExacto = ""
     contadorTipoMonedasVacias = 0
 
     for i in range(len(cantidadMonedasTipo)):
@@ -58,10 +59,12 @@ while True:
             contadorTipoMonedasVacias += 1
 
     if contadorTipoMonedasVacias == 2 or cantidadMonedasTipo[len(cantidadMonedasTipo)-1] == 0:
-        mensajePecioExacto = "\033[31m - SOLO PRECIOS EXACTOS (CAMBIO INSUFICIENTE) - \033[0m"
+        mensajePrecioExacto = "\033[31m - SOLO PRECIOS EXACTOS (CAMBIO INSUFICIENTE) - \033[0m"
+
+    #COBRO DE LA BEBIDA
 
     while not precioBebidaPagado:
-        dineroIntroducido = float(input(f"INTRODUZCA MONEDA O BILLETE{mensajePecioExacto}: "))
+        dineroIntroducido = float(input(f"INTRODUZCA MONEDA O BILLETE{mensajePrecioExacto}: "))
         if dineroIntroducido not in monedas and dineroIntroducido not in billetesValidos:
             print(f"\033[31mVALOR NO VÁLIDO\033[0m")
         else:
